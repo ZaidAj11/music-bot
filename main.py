@@ -3,6 +3,7 @@ import discord
 from discord.ext import commands
 import music
 
+
 intents = discord.Intents.default()
 intents.members = True
 
@@ -16,7 +17,6 @@ async def on_ready():
 for i in range(len(cogs)):
   cogs[i].setup(client)
 
+my_secret = os.getenv('token')
 
-
-
-client.run('ODg3MTIyNjkyNzYxODYyMTY0.YT_jYw.CtUP_0Rqy6OxYRu7_yzVj_EvbR4')
+client.run(my_secret)
