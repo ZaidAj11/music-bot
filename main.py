@@ -2,7 +2,7 @@ import os
 import discord
 from discord.ext import commands
 import music
-
+import keep_alive
 
 intents = discord.Intents.default()
 intents.members = True
@@ -18,5 +18,5 @@ for i in range(len(cogs)):
   cogs[i].setup(client)
 
 my_secret = os.getenv('token')
-
+keep_alive.keep_alive()
 client.run(my_secret)
