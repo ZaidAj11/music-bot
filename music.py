@@ -90,7 +90,13 @@ class music(commands.Cog):
       if self.now_on == False:
         await self.check_queue()
 
-
+  @commands.command()
+  async def s(self, ctx):
+    if self.vc != "":
+      
+      if len(self.song_queue) > 0:
+        self.vc.stop()
+        await self.check_queue()
 
   @commands.command()
   async def pause(self,ctx):
@@ -102,7 +108,18 @@ class music(commands.Cog):
   async def resume(self,ctx):
     await ctx.voice_client.pause()
     await ctx.send("Audio resumed")
+    
+  @commands.command()
+  async def q(self,ctx):
+    if self.song_queue:
+      next_song = "";
+      for i in range(0,len(self.song_queue)):
+        temp = str(i+1)
+        next_song += temp + " " + self.song_queue[i][0]['title'] + "\n"
 
+      await ctx.send("```\n" + next_song + " \n```")
+    else:
+      await ctx.send("Nothing in queue")
 
 
 
